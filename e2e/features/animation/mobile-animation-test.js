@@ -2,12 +2,13 @@ const TIME_LIMIT = 10000;
 
 module.exports = {
   before: (c) => {
-    c.url(`${c.globals.url}'?v=-82.73697802714918,27.137724977419197,-71.17181984959728,52.16591344371096&lg=false&t=2022-01-07-T15%3A27%3A49Z`);
     c.setWindowSize(375, 667);
     c.pause(10000);
   },
 
   'Mobile animate button opens widget': (c) => {
+    c.url(`${c.globals.url}'?v=-82.73697802714918,27.137724977419197,-71.17181984959728,52.16591344371096&lg=false&t=2022-01-07-T15%3A27%3A49Z`);
+    c.pause(10000);
     c.waitForElementPresent('.mobile-date-picker-select-btn', TIME_LIMIT);
     c.waitForElementPresent('.mobile-animate-button', TIME_LIMIT);
     c.useCss().click('.mobile-animate-button');
