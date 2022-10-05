@@ -9,8 +9,8 @@ module.exports = {
   'Mobile animate button opens widget': (c) => {
     c.url(`${c.globals.url}'?v=-82.73697802714918,27.137724977419197,-71.17181984959728,52.16591344371096&lg=false&t=2022-01-07-T15%3A27%3A49Z`);
     c.pause(10000);
-    c.waitForElementPresent('.mobile-date-picker-select-btn', TIME_LIMIT);
     c.waitForElementPresent('.mobile-animate-button', TIME_LIMIT);
+    c.waitForElementPresent('.mobile-date-picker-select-btn', TIME_LIMIT);
     c.useCss().click('.mobile-animate-button');
     c.pause(300);
     c.waitForElementPresent('#wv-animation-widget', TIME_LIMIT);
