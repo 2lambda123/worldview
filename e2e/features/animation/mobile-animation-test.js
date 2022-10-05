@@ -1,13 +1,10 @@
-const skipTour = require('../../reuseables/skip-tour.js');
-
-const TIME_LIMIT = 5000;
+const TIME_LIMIT = 10000;
 
 module.exports = {
   before(c) {
-    skipTour.loadAndSkipTour(c, TIME_LIMIT);
     c.url(`${c.globals.url}'?v=-82.73697802714918,27.137724977419197,-71.17181984959728,52.16591344371096&lg=false&t=2022-01-07-T15%3A27%3A49Z`);
-    c.setWindowSize(450, 850);
-    c.pause(1000);
+    c.setWindowSize(375, 667);
+    c.pause(10000);
   },
 
   'Mobile animate button opens widget': (c) => {
