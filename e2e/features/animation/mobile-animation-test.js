@@ -8,7 +8,7 @@ module.exports = {
     c.pause(10000);
   },
 
-  //if this fails then the screen is not in mobile view
+  // if this fails then the screen is not in mobile view
   'Check if coords case is not visible to see if screen is in desktop view.': (c) => {
     c.waitForElementNotVisible('#ol-coords-case', TIME_LIMIT);
   },
