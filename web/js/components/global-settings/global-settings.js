@@ -20,7 +20,16 @@ function GlobalSettings(props) {
     globalTemperatureUnit,
     changeCoordinateFormatAction,
     coordinateFormat,
+    state,
   } = props;
+
+  const showState = () => {
+    console.log(state.layers.active);
+    const { granuleLayers } = state.layers.active;
+    for (const [key, value] of Object.entries(granuleLayers)) {
+      console.log(`${key}: ${value.count}`);
+    }
+  };
 
   return (
     <>
@@ -67,6 +76,18 @@ function GlobalSettings(props) {
             </Button>
           </ButtonGroup>
         </div>
+        <div className="settings-component">
+          <h3 className="wv-header">
+            Show State
+          </h3>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={showState}
+          >
+            Show State
+          </button>
+        </div>
       </div>
     </>
   );
@@ -79,6 +100,7 @@ function mapStateToProps(state) {
     globalTemperatureUnit,
     alwaysShowDatelines,
     coordinateFormat,
+    state,
   };
 }
 
