@@ -20,16 +20,7 @@ function GlobalSettings(props) {
     globalTemperatureUnit,
     changeCoordinateFormatAction,
     coordinateFormat,
-    state,
   } = props;
-
-  const showState = () => {
-    console.log(state.layers.active);
-    const { granuleLayers } = state.layers.active;
-    for (const [key, value] of Object.entries(granuleLayers)) {
-      console.log(`${key}: ${value.count}`);
-    }
-  };
 
   return (
     <>
@@ -83,7 +74,6 @@ function GlobalSettings(props) {
           <button
             type="button"
             className="btn btn-primary"
-            onClick={showState}
           >
             Show State
           </button>
