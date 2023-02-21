@@ -47,7 +47,7 @@ import { clearPreload, setPreload } from '../modules/date/actions';
 
 const { events } = util;
 
-const MapUI = (props) => {
+function MapUI(props) {
   const {
     activeLayers,
     activeLayersState,
@@ -394,7 +394,7 @@ const MapUI = (props) => {
       <BufferQuickAnimate action={quickAnimateAction} />
     </>
   );
-};
+}
 
 const mapStateToProps = (state) => {
   const {
