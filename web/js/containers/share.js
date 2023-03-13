@@ -9,6 +9,7 @@ import {
 import {
   Input,
   InputGroup,
+  InputGroupAddon,
   Button,
   Nav, NavItem, NavLink,
   TabContent, TabPane,
