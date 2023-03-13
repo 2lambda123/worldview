@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {
-  Button, InputGroup,
+  Button, InputGroup, InputGroupAddon,
 } from 'reactstrap';
 import {
   debounce as lodashDebounce,
@@ -305,14 +305,16 @@ class LocationSearchModal extends Component {
     const buttonId = 'location-search-minimize-button';
     const labelText = 'Hide Location Search';
     return (
-      <Button
-        id={buttonId}
-        className={buttonId}
-        onClick={toggleShowLocationSearch}
-      >
-        {this.renderTooltip(buttonId, labelText)}
-        <div className={`${buttonId}-chevron`} />
-      </Button>
+      <InputGroupAddon addonType="prepend">
+        <Button
+          id={buttonId}
+          className={buttonId}
+          onClick={toggleShowLocationSearch}
+        >
+          {this.renderTooltip(buttonId, labelText)}
+          <div className={`${buttonId}-chevron`} />
+        </Button>
+      </InputGroupAddon>
     );
   };
 
@@ -322,15 +324,17 @@ class LocationSearchModal extends Component {
     const labelText = 'Add marker on map';
 
     return (
-      <Button
-        id={buttonId}
-        onTouchEnd={this.initReverseGeocode}
-        onMouseDown={this.initReverseGeocode}
-        className={buttonId}
-      >
-        {this.renderTooltip(buttonId, labelText)}
-        <FontAwesomeIcon icon="map-marker-alt" size="1x" />
-      </Button>
+      <InputGroupAddon addonType="append">
+        <Button
+          id={buttonId}
+          onTouchEnd={this.initReverseGeocode}
+          onMouseDown={this.initReverseGeocode}
+          className={buttonId}
+        >
+          {this.renderTooltip(buttonId, labelText)}
+          <FontAwesomeIcon icon="map-marker-alt" size="1x" />
+        </Button>
+      </InputGroupAddon>
     );
   };
 

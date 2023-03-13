@@ -209,13 +209,15 @@ class ShareLinkContainer extends Component {
           e.preventDefault();
         }}
       />
-      <Button
-        id={`copy-to-clipboard-button-${type}`}
-        onClick={() => this.copyToClipboard(value)}
-        onTouchEnd={() => this.copyToClipboard(value)}
-      >
-        COPY
-      </Button>
+      <InputGroupAddon addonType="append">
+        <Button
+          id={`copy-to-clipboard-button-${type}`}
+          onClick={() => this.copyToClipboard(value)}
+          onTouchEnd={() => this.copyToClipboard(value)}
+        >
+          COPY
+        </Button>
+      </InputGroupAddon>
     </InputGroup>
   );
 

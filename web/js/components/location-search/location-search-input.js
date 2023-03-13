@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Autocomplete from 'react-autocomplete';
-import { Button, UncontrolledTooltip } from 'reactstrap';
+import { Button, InputGroupAddon, UncontrolledTooltip } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SearchBox extends Component {
@@ -109,7 +109,7 @@ class SearchBox extends Component {
     const tooltipVisibilityCondition = inputValue && !isMobile;
 
     return (
-      <div className="location-search-input-group-addon submit-group">
+      <InputGroupAddon className="location-search-input-group-addon submit-group" addonType="prepend">
         <Button
           id={buttonId}
           style={buttonStyle}
@@ -130,7 +130,7 @@ class SearchBox extends Component {
           )}
           <FontAwesomeIcon icon="search-location" size="1x" />
         </Button>
-      </div>
+      </InputGroupAddon>
     );
   };
 
@@ -142,9 +142,13 @@ class SearchBox extends Component {
 
     return (
       activeAlert && (
-        <div className="location-search-input-group-addon location-search-input-alert-icon">
+        <InputGroupAddon
+          className="location-search-input-group-addon location-search-input-alert-icon"
+          addonType="append"
+          title="The entered location is not available."
+        >
           <FontAwesomeIcon icon="exclamation-triangle" size="1x" />
-        </div>
+        </InputGroupAddon>
       )
     );
   };
@@ -160,24 +164,29 @@ class SearchBox extends Component {
 
     return (
       inputValue && (
-        <Button
-          id={buttonId}
-          onClick={clearInput}
-          className={buttonId}
+        <InputGroupAddon
+          className="location-search-input-group-addon location-search-input-clear-container"
+          addonType="append"
         >
-          {tooltipVisibilityCondition && (
-          <UncontrolledTooltip
-            id="center-align-tooltip"
-            trigger="hover"
-            target={buttonId}
-            boundariesElement="window"
-            placement="bottom"
+          <Button
+            id={buttonId}
+            onClick={clearInput}
+            className={buttonId}
           >
-            {labelText}
-          </UncontrolledTooltip>
-          )}
-          <FontAwesomeIcon icon="times" size="1x" />
-        </Button>
+            {tooltipVisibilityCondition && (
+            <UncontrolledTooltip
+              id="center-align-tooltip"
+              trigger="hover"
+              target={buttonId}
+              boundariesElement="window"
+              placement="bottom"
+            >
+              {labelText}
+            </UncontrolledTooltip>
+            )}
+            <FontAwesomeIcon icon="times" size="1x" />
+          </Button>
+        </InputGroupAddon>
       )
     );
   };
