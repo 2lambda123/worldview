@@ -212,10 +212,12 @@ export default function mapLayerBuilder(config, cache, store) {
         layer = await getGranuleLayer(def, attributes, options);
       }
     }
-    if (layerSetOpacityCount === 0) {
+    await layer.setOpacity(1.0);
+    setTimeout(async () => {
+      console.log(opacity)
       await layer.setOpacity(opacity || 1.0);
-    }
-    layerSetOpacityCount += 1;
+    }, 1000)
+
     return layer;
   };
 
