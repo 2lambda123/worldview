@@ -44,7 +44,6 @@ import {
 
 export default function mapLayerBuilder(config, cache, store) {
   const { getGranuleLayer } = granuleLayerBuilder(cache, store, createLayerWMTS);
-  let layerSetOpacityCount = 0;
 
   /**
    * Return a layer, or layergroup, created with the supplied function
@@ -214,9 +213,9 @@ export default function mapLayerBuilder(config, cache, store) {
     }
     await layer.setOpacity(1.0);
     setTimeout(async () => {
-      console.log(opacity)
+      console.log(opacity);
       await layer.setOpacity(opacity || 1.0);
-    }, 1000)
+    }, 1000);
 
     return layer;
   };

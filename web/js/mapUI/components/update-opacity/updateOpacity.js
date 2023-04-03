@@ -71,9 +71,9 @@ function UpdateOpacity(props) {
     } else {
       const layerGroup = findLayer(def, activeString);
       layerGroup.getLayersArray().forEach((l) => {
-        console.log('set opacity')
+        console.log('set opacity');
         l.setOpacity(parseFloat(opacity));
-        console.log(l.state_.opacity)
+        console.log(l.state_.opacity);
       });
     }
     updateLayerVisibilities();
