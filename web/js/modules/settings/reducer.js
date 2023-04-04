@@ -1,5 +1,10 @@
 import safeLocalStorage from '../../util/local-storage';
-import { CHANGE_TEMPERATURE_UNIT, CHANGE_DATELINE_VISIBILITY, CHANGE_COORDINATE_FORMAT } from './constants';
+import {
+  CHANGE_TEMPERATURE_UNIT,
+  CHANGE_DATELINE_VISIBILITY,
+  CHANGE_COORDINATE_FORMAT,
+  UPDATE_LATEST_IMAGERY_TIME
+} from './constants';
 
 const { GLOBAL_TEMPERATURE_UNIT, ALWAYS_SHOW_DATELINES, COORDINATE_FORMAT } = safeLocalStorage.keys;
 
@@ -7,6 +12,7 @@ export const initialState = {
   globalTemperatureUnit: '',
   alwaysShowDatelines: false,
   coordinateFormat: '',
+  updateLatestImageryAndTime: false,
 };
 
 export function getInitialState() {
@@ -47,6 +53,12 @@ export const settingsReducer = (state = initialState, action) => {
         ...state,
         coordinateFormat: action.value,
       };
+    }
+    case UPDATE_LATEST_IMAGERY_TIME: {
+      return {
+        ...state,
+        updateLatestImageryAndTime: value,
+      }
     }
     default:
       return state;

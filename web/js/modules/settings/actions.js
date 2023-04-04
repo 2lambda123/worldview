@@ -2,6 +2,7 @@ import {
   CHANGE_TEMPERATURE_UNIT,
   CHANGE_DATELINE_VISIBILITY,
   CHANGE_COORDINATE_FORMAT,
+  UPDATE_LATEST_IMAGERY_TIME,
 } from './constants';
 import safeLocalStorage from '../../util/local-storage';
 import util from '../../util/util';
@@ -42,4 +43,11 @@ export function changeCoordinateFormat(value) {
     type: CHANGE_COORDINATE_FORMAT,
     value,
   };
+}
+
+export function updateLatestImageryAndTime(value) {
+  return {
+    type: UPDATE_LATEST_IMAGERY_TIME,
+    value,
+  }
 }
