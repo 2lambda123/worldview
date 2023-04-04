@@ -25,6 +25,7 @@ export function getInitialState() {
       globalTemperatureUnit: safeLocalStorage.getItem(GLOBAL_TEMPERATURE_UNIT),
       alwaysShowDatelines,
       coordinateFormat: defaultCoordinateFormat,
+      updateLatestImageryAndTime: false,
     };
   }
 
@@ -32,6 +33,7 @@ export function getInitialState() {
     globalTemperatureUnit: safeLocalStorage.getItem(GLOBAL_TEMPERATURE_UNIT),
     alwaysShowDatelines,
     coordinateFormat: safeLocalStorage.getItem(COORDINATE_FORMAT),
+    updateLatestImageryAndTime: false,
   };
 }
 
@@ -57,7 +59,7 @@ export const settingsReducer = (state = initialState, action) => {
     case UPDATE_LATEST_IMAGERY_TIME: {
       return {
         ...state,
-        updateLatestImageryAndTime: value,
+        updateLatestImageryAndTime: action.value,
       }
     }
     default:
