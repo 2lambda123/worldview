@@ -6,6 +6,7 @@ import { Button, ButtonGroup } from 'reactstrap';
 import HoverTooltip from '../util/hover-tooltip';
 import TemperatureUnitButtons from './temperature-unit-buttons';
 import CoordinateFormatButtons from './coordinate-format-buttons';
+import LatestImagerySelect from './latest-imagery-select';
 import {
   changeTemperatureUnit,
   changeDatelineVisibility,
@@ -66,6 +67,7 @@ function GlobalSettings(props) {
           </Button>
         </ButtonGroup>
       </div>
+      <LatestImagerySelect />
     </div>
   );
 }
