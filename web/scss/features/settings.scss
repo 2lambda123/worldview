@@ -16,6 +16,35 @@
     margin-bottom: 12px;
   }
 
+  #latest-imagery-options-container {
+    display: flex;
+    align-items: center;
+
+    #latest-imagery-menu-container {
+      margin-left: 10px;
+    }
+
+    #latest-imagery-menu-button {
+      background: $wv-orange;
+      border-color: $wv-orange;
+    }
+
+    #latest-imagery-menu-button:disabled {
+      background: #a3a3a3;
+      border-color: #a3a3a3;
+      cursor: not-allowed;
+    }
+
+    #latest-imagery-menu {
+      background-color: #000;
+    }
+
+    #latest-imagery-menu button {
+      color: #eee;
+    }
+
+  }
+
   .btn-group button.setting-button {
     color: #fff;
     background: #222;
