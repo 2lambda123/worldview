@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   findIndex as lodashFindIndex,
   get as lodashGet,
@@ -15,25 +15,39 @@ import { setStyleFunction } from '../../../modules/vector-styles/selectors';
 import { getSelectedDate } from '../../../modules/date/selectors';
 import * as dateConstants from '../../../modules/date/constants';
 import * as layerConstants from '../../../modules/layers/constants';
+import { UPDATE_LATEST_IMAGERY_TIME } from '../../../modules/settings/constants'
+import { triggerTodayButton as triggerUpdateAction } from '../../../modules/date/actions'
 
 function UpdateDate(props) {
   const {
     action,
-    activeLayers,
-    activeString,
     compareMapUi,
-    config,
-    dateCompareState,
     getGranuleOptions,
-    granuleState,
-    isCompareActive,
-    layerState,
     preloadNextTiles,
-    state,
     ui,
     updateLayerVisibilities,
-    vectorStyleState,
   } = props;
+
+  // redux state
+  const {
+    compare, date, layers, proj, vectorStyles, config, map, settings,
+  } = useSelector((state) => state);
+  const dateCompareState = { date, compare };
+  const granuleState = { compare, layers };
+  const layerState = { compare, map };
+  const vectorStyleState = { proj, vectorStyles, config };
+  const activeLayers = getActiveLayers(useSelector((state) => state));
+  const allActiveLayers = getAllActiveLayers(useSelector((state) => state))
+  const isCompareActive = compare.active;
+  const { activeString } = compare;
+  const { updateLatestImageryAndTime } = settings
+
+  // redux actions
+  const dispatch = useDispatch();
+  const triggerUpdate = () => {
+    console.log('dispatching update action')
+    dispatch(triggerUpdateAction())
+  }
 
   useEffect(() => {
     actionSwitch();
@@ -53,7 +67,41 @@ function UpdateDate(props) {
     } if (action.type === layerConstants.TOGGLE_LAYER_VISIBILITY || action.type === layerConstants.TOGGLE_OVERLAY_GROUP_VISIBILITY) {
       return updateDate();
     }
+    if (action.type === UPDATE_LATEST_IMAGERY_TIME){
+      handleLatestImageryCall()
+    }
   };
+
+  // =================== TIMER STUFF ==============================
+  // ref for persistent timer
+  const intervalId = useRef(null);
+
+  const startInterval = () => {
+    console.log('starting interval')
+    intervalId.current = setInterval(() => {
+      triggerUpdate();
+    }, 5000); // 5 seconds in milliseconds
+  }
+
+  const stopInterval = () => {
+    console.log('stopping interval')
+    clearInterval(intervalId.current);
+    intervalId.current = null;
+  };
+
+  const handleLatestImageryCall = () => {
+    console.log('handle call... updateLatestImageryState ==', updateLatestImageryAndTime)
+    // if (updateLatestImageryAndTime) {
+    //   startInterval()
+    // } else {
+    //   stopInterval()
+    // }
+
+    updateLatestImageryAndTime ? startInterval() : stopInterval();
+
+  }
+
+  // =================== END TIMER STUFF ==============================
 
   function findLayerIndex({ id }) {
     const layerGroup = getActiveLayerGroup(layerState);
@@ -97,9 +145,9 @@ function UpdateDate(props) {
     const layerGroup = getActiveLayerGroup(layerState);
     const mapLayerCollection = layerGroup.getLayers();
     const layers = mapLayerCollection.getArray();
-    const activeLayers = getAllActiveLayers(state);
+    // const activeLayers = getAllActiveLayers(state);
 
-    const visibleLayers = activeLayers.filter(
+    const visibleLayers = allActiveLayers.filter(
       ({ id }) => layers
         .map(({ wv }) => lodashGet(wv, 'def.id'))
         .includes(id),
@@ -137,33 +185,31 @@ function UpdateDate(props) {
   return null;
 }
 
-const mapStateToProps = (state) => {
-  const {
-    compare, date, layers, proj, vectorStyles, config, map,
-  } = state;
-  const dateCompareState = { date, compare };
-  const { activeString } = compare;
-  const activeLayers = getActiveLayers(state);
-  const isCompareActive = compare.active;
-  const granuleState = { compare, layers };
-  const layerState = { compare, map };
-  const vectorStyleState = { proj, vectorStyles, config };
+// const mapStateToProps = (state) => {
+//   const {
+//     compare, date, layers, proj, vectorStyles, config, map,
+//   } = state;
+//   const dateCompareState = { date, compare };
+//   const { activeString } = compare;
+//   const activeLayers = getActiveLayers(state);
+//   const isCompareActive = compare.active;
+//   const granuleState = { compare, layers };
+//   const layerState = { compare, map };
+//   const vectorStyleState = { proj, vectorStyles, config };
 
-  return {
-    activeLayers,
-    activeString,
-    dateCompareState,
-    granuleState,
-    isCompareActive,
-    layerState,
-    state,
-    vectorStyleState,
-  };
-};
+//   return {
+//     activeLayers,
+//     activeString,
+//     dateCompareState,
+//     granuleState,
+//     isCompareActive,
+//     layerState,
+//     state,
+//     vectorStyleState,
+//   };
+// };
 
-export default connect(
-  mapStateToProps,
-)(UpdateDate);
+export default UpdateDate;
 
 UpdateDate.propTypes = {
   action: PropTypes.object,

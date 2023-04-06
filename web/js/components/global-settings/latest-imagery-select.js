@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   UncontrolledTooltip,
@@ -10,51 +10,43 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import Checkbox from '../util/checkbox'
 import { updateLatestImageryAndTime as updateImageryTimeAction } from '../../modules/settings/actions'
-import { triggerTodayButton as triggerUpdateAction } from '../../modules/date/actions'
+
+const menuOptions = [
+  {
+    title: '15 sec',
+    value: 15000,
+  },
+  {
+    title: '5 min',
+    value: 5 * 60000,
+  },
+  {
+    title: '10 min',
+    value: 10 * 60000,
+  },
+  {
+    title: '15 min',
+    value: 15 * 60000,
+  },
+  {
+    title: '30 min',
+    value: 30 * 60000,
+  },
+  {
+    title: '60 min',
+    value: 60 * 60000,
+  }
+]
 
 function LatestImagerySelect () {
-  // ===================== REDUX ==================================
-  const dispatch = useDispatch();
-  const toggleLatestImageryAndTime = (bool) => { dispatch(updateImageryTimeAction(bool))}
-  const triggerUpdate = () => {
-    console.log('dispatching action')
-    dispatch(triggerUpdateAction())
-  }
   const { updateLatestImageryAndTime } = useSelector((state) => ({
     updateLatestImageryAndTime: state.settings.updateLatestImageryAndTime
   }))
-  const handleCheckboxClick = () => {
-    toggleLatestImageryAndTime(!updateLatestImageryAndTime)
-  }
-  // ===================== END REDUX ==================================
 
-  // ==================== MENU LOGIC =================================
-  const menuOptions = [
-    {
-      title: '15 sec',
-      value: 15000,
-    },
-    {
-      title: '5 min',
-      value: 5 * 60000,
-    },
-    {
-      title: '10 min',
-      value: 10 * 60000,
-    },
-    {
-      title: '15 min',
-      value: 15 * 60000,
-    },
-    {
-      title: '30 min',
-      value: 30 * 60000,
-    },
-    {
-      title: '60 min',
-      value: 60 * 60000,
-    }
-  ]
+  const dispatch = useDispatch();
+  // updates bool val in settings state to indicate if setting is on/off
+  const toggleLatestImageryAndTime = (bool) => { dispatch(updateImageryTimeAction(bool))}
+
 
   const [menuOpen, setMenuOpen] = useState(false)
   const toggle = () => setMenuOpen(!menuOpen)
@@ -64,29 +56,11 @@ function LatestImagerySelect () {
   const handleMenuSelect = (option) => {
     setSelectedInterval(option)
   }
-  // ==================== END MENU LOGIC =================================
 
-  // ==================== TIMER LOGIC ================================
-  // Set up an interval to trigger the action
-  const intervalId = useRef(null);
-
-  useEffect(() => {
-    if (updateLatestImageryAndTime) {
-      console.log('setting new timer');
-      intervalId.current = setInterval(() => {
-        triggerUpdate();
-      }, 5000); // 5 seconds in milliseconds
-    }
-  }, [updateLatestImageryAndTime, triggerUpdate]);
-
-  // Clear the interval when the checkbox is unchecked
-  useEffect(() => {
-      if (!updateLatestImageryAndTime) {
-        clearInterval(intervalId.current);
-      }
-  }, [updateLatestImageryAndTime]);
-  // ==================== END TIMER LOGIC ================================
-
+  // on checkbox click update setting state and
+  const handleCheckboxClick = () => {
+    toggleLatestImageryAndTime(!updateLatestImageryAndTime)
+  }
 
   const headerText = 'Automatically Update Latest Imagery & Time  '
   const tooltipText = 'Automatically check and update on screen imagery and time to latest available. Updated imagery may not always be availabe at each interval.'
