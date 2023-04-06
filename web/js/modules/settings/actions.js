@@ -45,12 +45,13 @@ export function changeCoordinateFormat(value) {
   };
 }
 
-export function updateLatestImageryAndTime(isActive, interval) {
+export function updateLatestImageryAndTime(isActive, interval, title) {
   return {
     type: UPDATE_LATEST_IMAGERY_TIME,
     payload: {
       isActive,
       interval,
+      title,
     }
   }
 }

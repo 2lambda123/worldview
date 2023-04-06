@@ -68,7 +68,7 @@ function UpdateDate(props) {
       return updateDate();
     }
     if (action.type === UPDATE_LATEST_IMAGERY_TIME){
-      handleLatestImagerySettingUpdate()
+      // handleLatestImagerySettingUpdate()
     }
   };
 
@@ -88,6 +88,19 @@ function UpdateDate(props) {
     clearInterval(intervalId.current);
     intervalId.current = null;
   };
+
+  useEffect(() => {
+    if (isActive) {
+      startInterval();
+    } else {
+      stopInterval();
+    }
+
+    // Cleanup effect when the component is unmounted or when interval changes
+    return () => {
+      stopInterval();
+    };
+  }, [isActive, interval]);
 
   const handleLatestImagerySettingUpdate = () => {
     console.log('handle call... updateLatestImageryState ==', isActive)

@@ -15,6 +15,7 @@ export const initialState = {
   updateLatestImageryAndTime: {
     isActive: false,
     interval: null,
+    title: ''
   },
 };
 
@@ -22,16 +23,18 @@ export function getInitialState() {
   const alwaysShowDatelines = Boolean(safeLocalStorage.getItem(ALWAYS_SHOW_DATELINES));
   const initialCoordinateFormat = safeLocalStorage.getItem(COORDINATE_FORMAT);
   const defaultCoordinateFormat = 'latlon-dd';
+  const defaultLatestImageryAndTime = {
+    isActive: false,
+    interval: 5000,
+    title: '5 sec'
+  }
 
   if (initialCoordinateFormat === null) {
     return {
       globalTemperatureUnit: safeLocalStorage.getItem(GLOBAL_TEMPERATURE_UNIT),
       alwaysShowDatelines,
       coordinateFormat: defaultCoordinateFormat,
-      updateLatestImageryAndTime: {
-        isActive: false,
-        interval: null,
-      },
+      updateLatestImageryAndTime: defaultLatestImageryAndTime
     };
   }
 
@@ -39,10 +42,7 @@ export function getInitialState() {
     globalTemperatureUnit: safeLocalStorage.getItem(GLOBAL_TEMPERATURE_UNIT),
     alwaysShowDatelines,
     coordinateFormat: safeLocalStorage.getItem(COORDINATE_FORMAT),
-    updateLatestImageryAndTime: {
-      isActive: false,
-      interval: null,
-    },
+    updateLatestImageryAndTime: defaultLatestImageryAndTime
   };
 }
 

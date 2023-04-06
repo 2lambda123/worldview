@@ -50,31 +50,41 @@ function LatestImagerySelect () {
   const { updateLatestImageryAndTime } = useSelector((state) => ({
     updateLatestImageryAndTime: state.settings.updateLatestImageryAndTime
   }))
-  const { isActive } = updateLatestImageryAndTime;
+  const { isActive, title, interval } = updateLatestImageryAndTime;
 
   const dispatch = useDispatch();
   // updates bool val in settings state to indicate if setting is on/off
-  const toggleLatestImageryAndTime = (payload) => { dispatch(updateImageryTimeAction(payload.isActive, payload.intervalValue))}
+  const toggleLatestImageryAndTime = (payload) => { dispatch(updateImageryTimeAction(payload.isActive, payload.interval, payload.title))}
 
   const [menuOpen, setMenuOpen] = useState(false)
   const toggle = () => setMenuOpen(!menuOpen)
 
-  const [selectedInterval, setSelectedInterval] = useState(menuOptions[0])
+  const [selectedInterval, setSelectedInterval] = useState({ title: title, value: interval })
 
   const handleMenuSelect = (option) => {
     setSelectedInterval(option)
+    // when menu options change we need to update redux state
+    const payload = { isActive, interval: option.value, title: option.title  };
+    toggleLatestImageryAndTime(payload);
   }
 
-  // on checkbox click update setting state and
+  // on checkbox click update setting state
   const handleCheckboxClick = () => {
-    const intervalValue = selectedInterval.value
-    const payload = { isActive: !isActive, intervalValue }
+    let payload
+    // if we are turning off setting, keep the same title/interval
+    if(isActive) {
+      payload = { isActive: false, interval, title }
+    // else if we are turning on we will use selected options
+    } else {
+      const { value, title } = selectedInterval
+      payload = { isActive: true, interval: value, title }
+    }
     toggleLatestImageryAndTime(payload)
   }
 
   const headerText = 'Automatically Update Latest Imagery & Time  '
   const tooltipText = 'Automatically check and update on screen imagery and time to latest available. Updated imagery may not always be availabe at each interval.'
-  const intervalTitle = selectedInterval.title
+
   return (
     <div className="settings-component">
       <h3 className="wv-header">
@@ -105,7 +115,7 @@ function LatestImagerySelect () {
           className={!isActive ? 'disabled' : ''}
           caret
           >
-            {intervalTitle}
+            {title}
           </DropdownToggle>
           <DropdownMenu
           id="latest-imagery-menu"
