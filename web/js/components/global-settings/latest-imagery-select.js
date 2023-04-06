@@ -13,6 +13,14 @@ import { updateLatestImageryAndTime as updateImageryTimeAction } from '../../mod
 
 const menuOptions = [
   {
+    title: '5 sec',
+    value: 5000,
+  },
+  {
+    title: '10 sec',
+    value: 10000,
+  },
+  {
     title: '15 sec',
     value: 15000,
   },
@@ -42,11 +50,11 @@ function LatestImagerySelect () {
   const { updateLatestImageryAndTime } = useSelector((state) => ({
     updateLatestImageryAndTime: state.settings.updateLatestImageryAndTime
   }))
+  const { isActive } = updateLatestImageryAndTime;
 
   const dispatch = useDispatch();
   // updates bool val in settings state to indicate if setting is on/off
-  const toggleLatestImageryAndTime = (bool) => { dispatch(updateImageryTimeAction(bool))}
-
+  const toggleLatestImageryAndTime = (payload) => { dispatch(updateImageryTimeAction(payload.isActive, payload.intervalValue))}
 
   const [menuOpen, setMenuOpen] = useState(false)
   const toggle = () => setMenuOpen(!menuOpen)
@@ -59,7 +67,9 @@ function LatestImagerySelect () {
 
   // on checkbox click update setting state and
   const handleCheckboxClick = () => {
-    toggleLatestImageryAndTime(!updateLatestImageryAndTime)
+    const intervalValue = selectedInterval.value
+    const payload = { isActive: !isActive, intervalValue }
+    toggleLatestImageryAndTime(payload)
   }
 
   const headerText = 'Automatically Update Latest Imagery & Time  '
@@ -81,18 +91,18 @@ function LatestImagerySelect () {
       <div id="latest-imagery-options-container">
         <Checkbox
         id="latest-imagery-checkbox"
-        checked={updateLatestImageryAndTime}
+        checked={isActive}
         onCheck={handleCheckboxClick}
         />
         <Dropdown
         id="latest-imagery-menu-container"
         isOpen={menuOpen}
         toggle={toggle}
-        disabled={!updateLatestImageryAndTime}
+        disabled={!isActive}
         >
           <DropdownToggle
           id="latest-imagery-menu-button"
-          className={!updateLatestImageryAndTime ? 'disabled' : ''}
+          className={!isActive ? 'disabled' : ''}
           caret
           >
             {intervalTitle}

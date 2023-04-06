@@ -40,7 +40,7 @@ function UpdateDate(props) {
   const allActiveLayers = getAllActiveLayers(useSelector((state) => state))
   const isCompareActive = compare.active;
   const { activeString } = compare;
-  const { updateLatestImageryAndTime } = settings
+  const { isActive, interval } = settings.updateLatestImageryAndTime
 
   // redux actions
   const dispatch = useDispatch();
@@ -68,7 +68,7 @@ function UpdateDate(props) {
       return updateDate();
     }
     if (action.type === UPDATE_LATEST_IMAGERY_TIME){
-      handleLatestImageryCall()
+      handleLatestImagerySettingUpdate()
     }
   };
 
@@ -80,7 +80,7 @@ function UpdateDate(props) {
     console.log('starting interval')
     intervalId.current = setInterval(() => {
       triggerUpdate();
-    }, 5000); // 5 seconds in milliseconds
+    }, interval); // 5 seconds in milliseconds
   }
 
   const stopInterval = () => {
@@ -89,16 +89,9 @@ function UpdateDate(props) {
     intervalId.current = null;
   };
 
-  const handleLatestImageryCall = () => {
-    console.log('handle call... updateLatestImageryState ==', updateLatestImageryAndTime)
-    // if (updateLatestImageryAndTime) {
-    //   startInterval()
-    // } else {
-    //   stopInterval()
-    // }
-
-    updateLatestImageryAndTime ? startInterval() : stopInterval();
-
+  const handleLatestImagerySettingUpdate = () => {
+    console.log('handle call... updateLatestImageryState ==', isActive)
+    isActive ? startInterval() : stopInterval();
   }
 
   // =================== END TIMER STUFF ==============================
