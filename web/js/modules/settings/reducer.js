@@ -3,7 +3,7 @@ import {
   CHANGE_TEMPERATURE_UNIT,
   CHANGE_DATELINE_VISIBILITY,
   CHANGE_COORDINATE_FORMAT,
-  UPDATE_LATEST_IMAGERY_TIME
+  UPDATE_LATEST_IMAGERY_TIME,
 } from './constants';
 
 const { GLOBAL_TEMPERATURE_UNIT, ALWAYS_SHOW_DATELINES, COORDINATE_FORMAT } = safeLocalStorage.keys;
@@ -15,7 +15,7 @@ export const initialState = {
   updateLatestImageryAndTime: {
     isActive: false,
     interval: null,
-    title: ''
+    title: '',
   },
 };
 
@@ -26,15 +26,15 @@ export function getInitialState() {
   const defaultLatestImageryAndTime = {
     isActive: false,
     interval: 5000,
-    title: '5 sec'
-  }
+    title: '5 sec',
+  };
 
   if (initialCoordinateFormat === null) {
     return {
       globalTemperatureUnit: safeLocalStorage.getItem(GLOBAL_TEMPERATURE_UNIT),
       alwaysShowDatelines,
       coordinateFormat: defaultCoordinateFormat,
-      updateLatestImageryAndTime: defaultLatestImageryAndTime
+      updateLatestImageryAndTime: defaultLatestImageryAndTime,
     };
   }
 
@@ -42,7 +42,7 @@ export function getInitialState() {
     globalTemperatureUnit: safeLocalStorage.getItem(GLOBAL_TEMPERATURE_UNIT),
     alwaysShowDatelines,
     coordinateFormat: safeLocalStorage.getItem(COORDINATE_FORMAT),
-    updateLatestImageryAndTime: defaultLatestImageryAndTime
+    updateLatestImageryAndTime: defaultLatestImageryAndTime,
   };
 }
 
@@ -69,7 +69,7 @@ export const settingsReducer = (state = initialState, action) => {
       return {
         ...state,
         updateLatestImageryAndTime: action.payload,
-      }
+      };
     }
     default:
       return state;

@@ -15,8 +15,7 @@ import { setStyleFunction } from '../../../modules/vector-styles/selectors';
 import { getSelectedDate } from '../../../modules/date/selectors';
 import * as dateConstants from '../../../modules/date/constants';
 import * as layerConstants from '../../../modules/layers/constants';
-import { UPDATE_LATEST_IMAGERY_TIME } from '../../../modules/settings/constants'
-import { triggerTodayButton as triggerUpdateAction } from '../../../modules/date/actions'
+import { triggerTodayButton as triggerUpdateAction } from '../../../modules/date/actions';
 
 function UpdateDate(props) {
   const {
@@ -37,17 +36,17 @@ function UpdateDate(props) {
   const layerState = { compare, map };
   const vectorStyleState = { proj, vectorStyles, config };
   const activeLayers = getActiveLayers(useSelector((state) => state));
-  const allActiveLayers = getAllActiveLayers(useSelector((state) => state))
+  const allActiveLayers = getAllActiveLayers(useSelector((state) => state));
   const isCompareActive = compare.active;
   const { activeString } = compare;
-  const { isActive, interval } = settings.updateLatestImageryAndTime
+  const { isActive, interval } = settings.updateLatestImageryAndTime;
 
   // redux actions
   const dispatch = useDispatch();
   const triggerUpdate = () => {
-    console.log('dispatching update action')
-    dispatch(triggerUpdateAction())
-  }
+    console.log('dispatching update action');
+    dispatch(triggerUpdateAction());
+  };
 
   useEffect(() => {
     actionSwitch();
@@ -67,9 +66,6 @@ function UpdateDate(props) {
     } if (action.type === layerConstants.TOGGLE_LAYER_VISIBILITY || action.type === layerConstants.TOGGLE_OVERLAY_GROUP_VISIBILITY) {
       return updateDate();
     }
-    if (action.type === UPDATE_LATEST_IMAGERY_TIME){
-      // handleLatestImagerySettingUpdate()
-    }
   };
 
   // =================== TIMER STUFF ==============================
@@ -77,14 +73,14 @@ function UpdateDate(props) {
   const intervalId = useRef(null);
 
   const startInterval = () => {
-    console.log('starting interval')
+    console.log('starting interval');
     intervalId.current = setInterval(() => {
       triggerUpdate();
     }, interval); // 5 seconds in milliseconds
-  }
+  };
 
   const stopInterval = () => {
-    console.log('stopping interval')
+    console.log('stopping interval');
     clearInterval(intervalId.current);
     intervalId.current = null;
   };
@@ -101,12 +97,6 @@ function UpdateDate(props) {
       stopInterval();
     };
   }, [isActive, interval]);
-
-  const handleLatestImagerySettingUpdate = () => {
-    console.log('handle call... updateLatestImageryState ==', isActive)
-    isActive ? startInterval() : stopInterval();
-  }
-
   // =================== END TIMER STUFF ==============================
 
   function findLayerIndex({ id }) {
@@ -151,7 +141,6 @@ function UpdateDate(props) {
     const layerGroup = getActiveLayerGroup(layerState);
     const mapLayerCollection = layerGroup.getLayers();
     const layers = mapLayerCollection.getArray();
-    // const activeLayers = getAllActiveLayers(state);
 
     const visibleLayers = allActiveLayers.filter(
       ({ id }) => layers
@@ -191,46 +180,13 @@ function UpdateDate(props) {
   return null;
 }
 
-// const mapStateToProps = (state) => {
-//   const {
-//     compare, date, layers, proj, vectorStyles, config, map,
-//   } = state;
-//   const dateCompareState = { date, compare };
-//   const { activeString } = compare;
-//   const activeLayers = getActiveLayers(state);
-//   const isCompareActive = compare.active;
-//   const granuleState = { compare, layers };
-//   const layerState = { compare, map };
-//   const vectorStyleState = { proj, vectorStyles, config };
-
-//   return {
-//     activeLayers,
-//     activeString,
-//     dateCompareState,
-//     granuleState,
-//     isCompareActive,
-//     layerState,
-//     state,
-//     vectorStyleState,
-//   };
-// };
-
 export default UpdateDate;
 
 UpdateDate.propTypes = {
   action: PropTypes.object,
-  activeLayers: PropTypes.array,
-  activeString: PropTypes.string,
   compareMapUi: PropTypes.object,
-  config: PropTypes.object,
-  dateCompareState: PropTypes.object,
   getGranuleOptions: PropTypes.func,
-  granuleState: PropTypes.object,
-  isComparActive: PropTypes.bool,
-  layerState: PropTypes.object,
   preloadNextTiles: PropTypes.func,
-  state: PropTypes.object,
   ui: PropTypes.object,
   updateLayerVisibilities: PropTypes.func,
-  vectorStyleState: PropTypes.object,
 };

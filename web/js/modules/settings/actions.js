@@ -52,6 +52,6 @@ export function updateLatestImageryAndTime(isActive, interval, title) {
       isActive,
       interval,
       title,
-    }
-  }
+    },
+  };
 }

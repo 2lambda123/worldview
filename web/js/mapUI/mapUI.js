@@ -19,7 +19,7 @@ import BufferQuickAnimate from './components/buffer-quick-animate/bufferQuickAni
 import { LOCATION_POP_ACTION } from '../redux-location-state-customs';
 import { CHANGE_PROJECTION } from '../modules/projection/constants';
 import { SET_SCREEN_INFO } from '../modules/screen-size/constants';
-import { UPDATE_LATEST_IMAGERY_TIME } from '../modules/settings/constants'
+import { UPDATE_LATEST_IMAGERY_TIME } from '../modules/settings/constants';
 import {
   REMOVE_MARKER,
   SET_MARKER,
