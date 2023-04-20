@@ -15,6 +15,7 @@ import {
 import mapCompare from '../map/compare/compare';
 import mapLayerBuilder from '../map/layerbuilder';
 import MapUI from './mapUI';
+import AddLayer from './new-components/add-layer/addLayer';
 
 const { events } = util;
 
@@ -24,6 +25,8 @@ function CombineUI(props) {
     config,
     store,
   } = props;
+
+  console.log('combine ui rerendeing')
 
   const registerMapMouseHandlers = (maps) => {
     Object.values(maps).forEach((map) => {
@@ -114,6 +117,7 @@ function CombineUI(props) {
   }, [ui]);
 
   return (
+    <>
     <MapUI
       models={models}
       compareMapUi={compareMapUi}
@@ -122,6 +126,12 @@ function CombineUI(props) {
       setUI={setUI}
       layerQueue={layerQueue}
     />
+    <AddLayer
+    ui={ui}
+    compareMapUi={compareMapUi}
+    layerQueue={layerQueue}
+    />
+    </>
   );
 }
 

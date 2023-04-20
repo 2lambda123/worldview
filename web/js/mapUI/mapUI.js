@@ -363,13 +363,13 @@ function MapUI(props) {
         findLayer={findLayer}
         ui={ui}
       />
-      <AddLayer
+      {/* <AddLayer
         action={addLayerAction}
         compareMapUi={compareMapUi}
         preloadNextTiles={preloadNextTiles}
         updateLayerVisibilities={updateLayerVisibilities}
         ui={ui}
-      />
+      /> */}
       <UpdateDate
         action={dateAction}
         ui={ui}
