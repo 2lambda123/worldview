@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import * as olProj from 'ol/proj';
 import {
   clone as lodashClone,
@@ -19,10 +19,6 @@ function Input({
 }) {
   const [inputValue, setInputValue] = useState(inputNumber);
   const [isInvalid, setInputInvalid] = useState(false);
-
-  useEffect(() => {
-    setInputValue(inputNumber);
-  }, [inputNumber]);
 
   const update = () => {
     try {
