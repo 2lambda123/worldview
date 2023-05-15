@@ -204,13 +204,13 @@ function BrowseLayers (props) {
     <>
       { isMobile ? renderMobileDropdown() : renderDesktopTabs() }
       {
-        isCategoryDisplay
-          ? (
-            <div className="product-outter-list-case">
-              <CategoryGrid width={width} />
-            </div>
-          ) : renderContent()
-        }
+      isCategoryDisplay
+        ? (
+          <div className="product-outter-list-case">
+            <CategoryGrid width={width} />
+          </div>
+        ) : renderContent()
+      }
     </>
   );
 }
