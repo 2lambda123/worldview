@@ -128,7 +128,7 @@ async function getMetadata (layerId, baseUrl, count) {
     method: 'get',
     url: `${baseUrl}${layerId}.json`,
     responseType: 'json',
-    timeout: 100000
+    timeout: 200000
   }).then(async (response) => {
     metadata = response.data
     layerMetadata[layerId] = await getDAAC(metadata)
