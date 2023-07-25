@@ -55,6 +55,13 @@ if (fs.existsSync(layerOrderFile)) {
 
 const outputFile = argv.layerMetadata
 
+console.log('options', options)
+console.log('argv', argv)
+console.log('featuresData', featuresData)
+console.log('layerOrderData', layerOrderData)
+console.log('outputFile', outputFile)
+console.log('features.features.vismetadata', features.features.vismetadata)
+
 const metadataConfig = features.features.vismetadata
 const url = metadataConfig.url
 const daacMap = metadataConfig.daacMap || {}
