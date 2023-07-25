@@ -54,14 +54,7 @@ if (fs.existsSync(layerOrderFile)) {
 }
 
 const outputFile = argv.layerMetadata
-
-console.log('options', options)
-console.log('argv', argv)
-console.log('featuresData', featuresData)
-console.log('layerOrderData', layerOrderData)
-console.log('outputFile', outputFile)
-console.log('features.features.vismetadata', features.features.vismetadata)
-
+  console.log('features', features)
 const metadataConfig = features.features.vismetadata
 const url = metadataConfig.url
 const daacMap = metadataConfig.daacMap || {}
@@ -88,6 +81,7 @@ useKeys = [
 ]
 
 async function main (url) {
+  console.log('url', url)
   layerOrder = layerOrder.layerOrder
   layerOrder = layerOrder.filter(x => !skipLayers.includes(x))
 
@@ -134,7 +128,7 @@ async function getMetadata (layerId, baseUrl, count) {
     method: 'get',
     url: `${baseUrl}${layerId}.json`,
     responseType: 'json',
-    timeout: 10000
+    timeout: 100000
   }).then(async (response) => {
     metadata = response.data
     layerMetadata[layerId] = await getDAAC(metadata)
