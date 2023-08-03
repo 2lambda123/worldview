@@ -25,7 +25,13 @@ if [ -d "$BASE/config/active" ]; then
 fi
 
 # If $IGNORE_ERRORS is true, don't fail on errors
-[ "$IGNORE_ERRORS" ] || set -e
+if [ "$IGNORE_ERRORS" ]; then
+    echo "!!!!!!IGNORE_ERRORS is true, script will not fail on errors"
+    set +e
+else
+    echo "!!!!!!IGNORE_ERRORS is not set, script will fail on errors"
+    set -e
+fi
 
 die() {
     echo "$PROG: ERROR: $@" >& 2
