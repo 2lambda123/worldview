@@ -122,7 +122,8 @@ async function getDAAC (metadata) {
 }
 
 async function getMetadata (layerId, baseUrl, count) {
-  if (count) console.warn(`retry #${count} for ${layerId}`)
+  // if (count) console.warn(`retry #${count} for ${layerId}`)
+  console.warn('FETCHING METADATA FROM GETVISMETADATA.JS')
   return axios({
     method: 'get',
     url: `${baseUrl}${layerId}.json`,

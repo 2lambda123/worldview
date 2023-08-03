@@ -3,6 +3,7 @@ const axios = require('axios')
 const fs = require('fs')
 const path = require('path')
 const yargs = require('yargs')
+const console = require('console')
 
 const prog = path.basename(__filename)
 
