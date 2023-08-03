@@ -184,14 +184,13 @@ async function processLayer (gcLayer, wvLayers, entry) {
     if (dimension['ows:Identifier']._text === 'Time') {
       try {
         // ADDED THESE
-        console.warn(`!!! wvLayer ===`, JSON.stringify(wvLayer, null, 2))
-        console.warn(`!!!dimension ===`, dimension)
+        console.warn('!!! wvLayer ===', JSON.stringify(wvLayer, null, 2))
+        console.warn('!!!dimension ===', dimension)
         // console.warn(`!!!gcLayer ===`, gcLayer)
         // if (dimension.Value._text)
         if ('Value' in dimension && Array.isArray(dimension.Value) && dimension.Value.some(el => '_text' in el)) {
           wvLayer = await processTemporalLayer(wvLayer, dimension.Value)
         }
-
       } catch (e) {
         console.error(e)
         console.error(`${prog}: ERROR: [${ident}] Error processing time values.`)

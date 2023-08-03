@@ -29,7 +29,7 @@ export default async function fetchWMSImage(layer, date, extent, testMode) {
   };
 
   try {
-    console.warn('FETCHING IMAGE FROM IMAGE-API-REQUEST.JS')
+    console.warn('FETCHING IMAGE FROM IMAGE-API-REQUEST.JS');
     const response = await axios.get(baseUrl, { params, responseType: 'arraybuffer' });
 
     // Convert the response data to a Blob which can be used as image src
