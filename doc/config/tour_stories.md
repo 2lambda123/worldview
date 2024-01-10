@@ -26,7 +26,7 @@ Here's an example of a minimum configuration for the Hurricane Florence story:
       "steps": [
         {
           "description": "step001.html",
-          "stepLink": "p=geographic&l=VIIRS_SNPP_CorrectedReflectance_TrueColor(hidden),MODIS_Aqua_CorrectedReflectance_TrueColor(hidden),MODIS_Terra_CorrectedReflectance_TrueColor,IMERG_Precipitation_Rate,Reference_Labels,Reference_Features,Coastlines(hidden)&t=2018-09-12-T00%3A00%3A00Z&z=3&t1=2018-09-19-T00%3A00%3A00Z&v=-91.32690967327403,23.259234869248033,-57.57690967327403,39.74751611924803"
+          "stepLink": "URL parameters for the Hurricane Florence story"
         }
       ]
     }
@@ -93,7 +93,7 @@ The minimum set of required properties are as follows:
       "steps": [
         {
           "description": "step001.html",
-          "stepLink": "p=geographic&l=VIIRS_SNPP_CorrectedReflectance_TrueColor(hidden),MODIS_Aqua_CorrectedReflectance_TrueColor(hidden),MODIS_Terra_CorrectedReflectance_TrueColor,IMERG_Precipitation_Rate,Reference_Labels,Reference_Features,Coastlines(hidden)&t=2018-09-12-T00%3A00%3A00Z&z=3&t1=2018-09-19-T00%3A00%3A00Z&v=-91.32690967327403,23.259234869248033,-57.57690967327403,39.74751611924803"
+          "stepLink": "p=geographic&l=The actual URL parameters for the desired layers and time range"
         },
         {
           "description": "step002.html",
