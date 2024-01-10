@@ -13,7 +13,7 @@
     "flood monitoring",
     "science",
     "earth science",
-    "GDAL"
+  "node": ">= 18.16.1"  "GDAL"
   ],
   "homepage": "https://worldview.earthdata.nasa.gov/",
   "bugs": {
