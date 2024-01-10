@@ -61,7 +61,7 @@ object that contains an object for each matrix set, keyed by the matrix set iden
   * **resolutions**: Array of resolutions for each zoom level.
   * **tileSize**: Array of pixel dimensions for each tile. Example; `[512, 512]`
 
-### Example sources.json
+### Example `sources.json` configuration with the correct URL and matrix set information for a new map source
 
 [`config/default/common/config/wv.json/sources.json`](../../config/default/release/config/sources.json)
 
@@ -91,7 +91,7 @@ To automatically fetch configuration information from the GetCapabilities
 document, modify the [`config.json`](../../config/default/release/config.json) file and add an object to the
 `wv-options-fetch` array with the following properties:
 
-* **from**: The URL to fetch the GetCapabilities document
+* **from**: The URL to fetch the GetCapabilities API document
 * **to**: Name of the temporary file used to store the GetCapabilities document.
 
 Now add an object to the `wv-options-wmts` array with the following properties:
