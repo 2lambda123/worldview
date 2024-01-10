@@ -6,7 +6,7 @@ CGI files. Next, enable these features in your configuration file.
 
 ## Layer Preview Images
 
-By default during the build process we try to fetch images of layers from our Snapshots application to show as previews in the layer picker component.  However, this will only work for layers that are present in NASA GIBS (Global Imagery Browse Services).  If you are serving your own layers, you will likely wish to disable this feature by setting `"previewSnapshots": false` in `config/default/common/features.json`.
+By default during the build process we try to fetch images of layers from our Snapshots application to show as previews in the layer picker component.  However, this will only work for layers that are present in NASA GIBS (Global Imagery Browse Services).  If you are serving your own layers, you will likely wish to disable this feature by setting `"previewSnapshots": false` in `config/default/common/features.json`. Make sure to edit the `config/default/common/features.json` file and set `"previewSnapshots"` to `false`.
 
 ## Natural Events
 
