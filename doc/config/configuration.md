@@ -20,13 +20,13 @@ To quickly switch between different configurations, use a symlink for `config/ac
 
 ## Updating the Configuration
 
-After making any changes to configuration files, rebuild the app for the changes to take effect.
+After making any changes to configuration files, rebuild the app using `npm run build` for the changes to take effect.
 Use the `npm run build` command to make a request to [the GIBS GetCapabilities API](https://nasa-gibs.github.io/gibs-api-docs/) to update layer configurations and rebuild the
-configuration file used by the application. After a successful build, this file can be found at: `build/options/config/wv.json`
+configuration file used by the application. After a successful build, the rebuilt configuration file can be found at: `build/options/config/wv.json`
 
 If you want to only rebuild `wv.json`, using GetCapabilities files that were previously requested,
 (e.g. if you are just modifying some configs locally and want to test your changes)
-you can simply run `npm run build:config`
+you can simply run `npm run build:config to rebuild only the `wv.json` file`
 
 ### Subdirectories
 
