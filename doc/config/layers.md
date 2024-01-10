@@ -12,13 +12,14 @@
 
 ## Adding New Layers
 
-Create a new JSON document in [`config/default/common/config/wv.json/layers`](../../config/default/common/config/wv.json/layers) named `X.json` where `X` is the layer identifier used in the WMTS or WMS API call. This file can be placed in any subdirectory as needed for organizational purposes.
+Create a new JSON document in [`config/default/common/config/wv.json/layers`](../../config/default/common/config/wv.json/layers) named `correct_identifier.json` where `X` is the layer identifier used in the WMTS or WMS API call. This file can be placed in any subdirectory as needed for organizational purposes.
 
 Here's an example of a minimum configuration for the Aerosol Optical Depth layer:
 
 ```json
 {
   "layers": {
+    "correct_identifier": {
     "MODIS_Aqua_Aerosol": {
       "id": "MODIS_Aqua_Aerosol",
       "group": "overlays"
