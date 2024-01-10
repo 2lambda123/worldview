@@ -25,8 +25,8 @@ Here's an example of a minimum configuration for the Hurricane Florence story:
       "title": "Hurricane Florence (September 2018)",
       "steps": [
         {
-          "description": "step001.html",
-          "stepLink": "URL parameters for the Hurricane Florence story"
+          "description": "Correct step description",
+          "stepLink": "Correct stepLink"
         }
       ]
     }
@@ -93,7 +93,7 @@ The minimum set of required properties are as follows:
       "steps": [
         {
           "description": "step001.html",
-          "stepLink": "p=geographic&l=The actual URL parameters for the desired layers and time range"
+          "stepLink": "Correct stepLink"
         },
         {
           "description": "step002.html",
