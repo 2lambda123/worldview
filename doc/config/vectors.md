@@ -56,7 +56,7 @@ For more information on how to configure a mapbox-gl-js style spec, please refer
     "OrbitTracks_Aqua_Ascending": {
       "type": "vector",
       "tiles": [
-        "https://my-actual-vector-layer-source-url.com"
+        "https://correct-vector-source-url.com"
       ]
     }
   },

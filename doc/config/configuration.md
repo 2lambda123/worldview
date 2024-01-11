@@ -1,13 +1,3 @@
-# Configuration
-
-## Table of Contents
-
-* [Overview](configuration.md)
-* [Adding New Layers](layers.md)
-  * [Vector Layers](vectors.md)
-  * [Adding Layers to Layer Picker](product_picker.md)
-* [Adding New Tour Stories](tour_stories.md)
-
 ---
 
 ## Overview
@@ -49,6 +39,42 @@ IGNORE_ERRORS=true npm run build:config
 
 ## New Map Sources
 
+```
+
+To create a custom configuration simply copy the `config/default` directory to `config/active` and modify it's contents as needed. Any configuration found in here will be used instead of `config/default`.
+
+To quickly switch between different configurations, use a symlink for `config/active`
+
+## Updating the Configuration
+
+After making any changes to configuration files, rebuild the app using `npm run build` for the changes to take effect.
+Use the `npm run build` command to make a request to [the GIBS GetCapabilities API](https://nasa-gibs.github.io/gibs-api-docs/) to update layer configurations and rebuild the
+configuration file used by the application. After a successful build, the rebuilt configuration file can be found at: `build/options/config/wv.json`
+
+If you want to only rebuild `wv.json`, using GetCapabilities files that were previously requested,
+(e.g. if you are just modifying some configs locally and want to test your changes)
+you can simply run `npm run build:config to rebuild only the `wv.json` file`
+
+### Subdirectories
+
+If you have a custom configuration in a subdirectory of `config/` other than
+`config/release/`, pass in the name of the subdirectory to use like so:
+
+```bash
+CONFIG_ENV=subdirectory_name npm run build:config
+```
+
+### Ignoring Build Errors
+
+To build an incomplete configuration, ignoring build errors, prefix the command like this:
+
+```bash
+IGNORE_ERRORS=true npm run build:config
+```
+
+---
+
+## New Map Sources
 Modify the [`sources.json`](../../config/default/release/config/sources.json) file. Within this file there is a *sources*
 object that contains an object for each map source keyed by the source identifier.
 For layers that can be configured via a GIBS WMTS GetCapabilities document or
