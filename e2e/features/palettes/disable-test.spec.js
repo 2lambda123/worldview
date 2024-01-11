@@ -22,9 +22,18 @@ test('Verify that toggling class updates permalink and layer-legend', async () =
   await page.locator('#active-Last_of_the_Wild_1995-2004').hover()
   await page.locator('#active-Last_of_the_Wild_1995-2004 .wv-layers-options').click()
   await page.locator('.classification-list .react-switch-case .react-switch-button').first().click()
+  // Step 1: Get the color box locator for the disabled classification
   const colorBoxDisabled = await page.locator('#Last_of_the_Wild_1995-2004_0_legend-color-Last_of_the_Wild_1995-2004-active1.disabled-classification')
+  // Step 2: Verify that the color box is not visible
   await expect(colorBoxDisabled).not.toBeVisible()
+  // Step 3: Hover over the active layer
+  await page.locator('#active-Last_of_the_Wild_1995-2004').hover()
+  // Step 4: Click on the layer options
+  await page.locator('#active-Last_of_the_Wild_1995-2004 .wv-layers-options').click()
+  // Step 5: Click on the switch button to toggle the classification
+  await page.locator('.classification-list .react-switch-case .react-switch-button').first().click()
   const url = await page.url()
+  // Step 6: Verify that the URL contains the updated disabled state
   expect(url).toContain('(disabled=0)')
 })
 
