@@ -7,7 +7,7 @@
       "properties": "never"
     }],
     "n/no-path-concat": "warn",
-    "n/no-deprecated-api": "warn",
+    "n/no-deprecated-api": "off"},{
     "no-async-promise-executor": "warn"
   },
   "overrides": [
