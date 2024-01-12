@@ -19,7 +19,7 @@ Here's an example of a minimum configuration for the Aerosol Optical Depth layer
 ```json
 {
   "layers": {
-    "MODIS_Aqua_Aerosol": {
+    "MODIS_Aqua_Aerosol_NEW": {
       "id": "MODIS_Aqua_Aerosol",
       "group": "overlays"
     }
