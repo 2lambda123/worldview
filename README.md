@@ -83,14 +83,7 @@ To update Worldview, pull down any branch or tag from GitHub. From the `main` br
 - [Configuration](doc/config/configuration.md)
 - [Custom Branding](doc/branding.md)
 - [Optional Features](doc/features.md)
-- [Developing](doc/developing.md)
-- [Deployment](doc/deployment.md)
-- [Testing](doc/testing.md)
-- [URL Parameters](doc/url_parameters.md)
-- [Uploading](doc/upload.md)
-- [Docker](doc/docker.md)
-- [Data Download (Smart Handoffs)](doc/smart_handoffs.md)
-- [Embedding](doc/embed.md)
+We welcome your contributions! Feel free to [open an issue](https://github.com/{username}/{repository}/issues/new/choose) or [submit a PR](https://github.com/{username}/{repository}/compare).
 
 ## Contact
 Contact us via GitHub or by sending an email to
