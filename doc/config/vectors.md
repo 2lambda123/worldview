@@ -55,7 +55,7 @@ For more information on how to configure a mapbox-gl-js style spec, please refer
   "sources": {
     "OrbitTracks_Aqua_Ascending": {
       "type": "vector",
-      "tiles": [
+      "tiles": [\n        "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/OrbitTracks_Aqua_Ascending/default/{Time}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.mvt", 
         "https://gibs.earthdata.nasa.gov/wmts/epsg4326/nrt/OrbitTracks_Aqua_Ascending/default/{Time}/{TileMatrixSet}/{TileMatrix}/{TileRow}/{TileCol}.mvt"
       ]
     }
