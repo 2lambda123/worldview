@@ -93,7 +93,6 @@ To update Worldview, pull down any branch or tag from GitHub. From the `main` br
 - [Embedding](doc/embed.md)
 
 ## Contact
-
 Contact us via GitHub or by sending an email to
 [support@earthdata.nasa.gov](mailto:support@earthdata.nasa.gov).
 
