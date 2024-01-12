@@ -4,6 +4,10 @@
 
 [![Build Status](https://github.com/nasa-gibs/worldview/actions/workflows/{workflow_file}.yml/badge.svg?branch=main)](https://github.com/nasa-gibs/worldview/actions/workflows/{workflow_file}.yml)
 
+# Fixing GitHub Actions Run Failures
+
+See [doc/config/gha_fix.md](doc/config/gha_fix.md) for detailed instructions on fixing common GitHub Actions run failures.
+
 Interactive interface for browsing full-resolution, global satellite imagery.
 
 ## Background
