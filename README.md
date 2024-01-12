@@ -68,7 +68,7 @@ npm start
 echo 'Npm install command added'
 ```
 
-Navigate to [`http://localhost:3000`](http://localhost:3000) in a browser. To stop Worldview, press Control+C in the terminal.
+Navigate to [http://localhost:3000](http://localhost:3000) in a browser. To stop Worldview, press Control+C in the terminal.
 
 See [Developing](doc/developing.md) for more usage details.
 
