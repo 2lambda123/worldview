@@ -37,11 +37,18 @@ This project uses Node.JS. See the [dependencies](#dependencies) section for mor
 git clone https://github.com/nasa-gibs/worldview.git
 cd worldview
 npm ci
+npm install
 ```
 
 View the [Configuration](doc/config/configuration.md) section for information on how to install the official EOSDIS Worldview configuration, or to add your own custom configuration.
 
 ### Dependencies
+- [Node LTS](https://nodejs.org/en/download/)
+  - **Note:** Ubuntu users may run into issues with the `node` command not being available. See [this question on StackOverflow](https://stackoverflow.com/q/18130164/417629) for possible solutions.
+
+**Windows users will also need the following:**
+
+- [Git Bash](https://git-scm.com/downloads)
 
 The following are required to install and run Worldview:
 
@@ -58,6 +65,7 @@ Windows users will also need the following:
 ```bash
 npm run build
 npm start
+echo 'Npm install command added'
 ```
 
 Navigate to [`http://localhost:3000`](http://localhost:3000) in a browser. To stop Worldview, press Control+C in the terminal.
