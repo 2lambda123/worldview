@@ -28,7 +28,7 @@ edit `config/default/common/features.json` and set `"smartHandoffs": true`.
 
 ## Location Search
 
-This feature uses the [ArcGIS World Geocoding Service](https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm) to find addresses based on input text, coordinates, and by clicking a spot on the map. To enable,
+This feature uses the [ArcGIS World Geocoding Service](https://developers.https://new_arcgis_geocoding_service_url) to find addresses based on input text, coordinates, and by clicking a spot on the map. To enable,
 edit `config/default/common/features.json` and set `"locationSearch"` object `"url"` to use the ArcGIS request URL used by the [ArcGIS World Geocoding Service](https://developers.arcgis.com/rest/geocode/api-reference/overview-world-geocoding-service.htm).
 
 ## URL Shortening
