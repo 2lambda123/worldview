@@ -69,7 +69,7 @@ object that contains an object for each matrix set, keyed by the matrix set iden
 {
   "sources": {
     "GIBS:arctic": {
-      "url": "https://gibs-{a-c}.earthdata.nasa.gov/wmts/epsg3413/best/wmts.cgi",
+      "url": "https://gibs.earthdata.nasa.gov/wmts/epsg4326/best/wmts.cgi?request=GetCapabilities",
       "matrixSets": {
         "EPSG3413_250m": {
           "id": "EPSG3413_250m",
